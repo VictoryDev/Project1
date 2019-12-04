@@ -1,24 +1,30 @@
 package expense;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Reimbursement {
 
+	private int reimb_id_pk;
 	private int reimb_id;
 	private String reimb_type;
 	private double amount;
-	private int status_id;
-	private String status;
+	private String reimb_status;
 	private Date dates;
+	private Timestamp reimb_submit;
+	private Timestamp reimb_resolve;
+	private String reimb_description;
 
-	public Reimbursement(int reimb_id, String reimb_type, double amount, int status_id, String status, Date date) {
+	public Reimbursement() {
 		super();
-		this.reimb_id = reimb_id;
-		this.reimb_type = reimb_type;
-		this.amount = amount;
-		this.status_id = status_id;
-		this.status = status;
-		this.date = date;
+	}
+
+	public int getReimb_id_pk() {
+		return reimb_id_pk;
+	}
+
+	public void setReimb_id_pk(int reimb_id_pk) {
+		this.reimb_id_pk = reimb_id_pk;
 	}
 
 	public int getReimb_id() {
@@ -45,34 +51,65 @@ public class Reimbursement {
 		this.amount = amount;
 	}
 
-	public int getStatus_id() {
-		return status_id;
-	}
-
-	public void setStatus_id(int status_id) {
-		this.status_id = status_id;
-	}
-
 	public String getStatus() {
-		return status;
+		return reimb_status;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setStatus(String reimb_status) {
+		this.reimb_status = reimb_status;
 	}
 
-	public Date getDate() {
-		return date;
+	public Date getDates() {
+		return dates;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDate(Date dates) {
+		this.dates = dates;
+	}
+
+	public Timestamp getReimb_submit() {
+		return reimb_submit;
+	}
+
+	public void setReimb_submit(Timestamp reimb_submit) {
+		this.reimb_submit = reimb_submit;
+	}
+
+	public Timestamp getReimb_resolve() {
+		return reimb_resolve;
+	}
+
+	public void setReimb_resolve(Timestamp reimb_resolve) {
+		this.reimb_resolve = reimb_resolve;
+	}
+
+	public String getReimb_description() {
+		return reimb_description;
+	}
+
+	public void setReimb_description(String reimb_description) {
+		this.reimb_description = reimb_description;
+	}
+
+	public Reimbursement(int reimb_id_pk, int reimb_id, String reimb_type, double amount, String reimb_status,
+			Date dates, Timestamp reimb_submit, Timestamp reimb_resolve, String reimb_description) {
+		super();
+		this.reimb_id_pk = reimb_id_pk;
+		this.reimb_id = reimb_id;
+		this.reimb_type = reimb_type;
+		this.amount = amount;
+		this.reimb_status = reimb_status;
+		this.dates = dates;
+		this.reimb_submit = reimb_submit;
+		this.reimb_resolve = reimb_resolve;
+		this.reimb_description = reimb_description;
 	}
 
 	@Override
 	public String toString() {
-		return "Reimbursement [reimb_id=" + reimb_id + ", reimb_type=" + reimb_type + ", amount=" + amount
-				+ ", status_id=" + status_id + ", status=" + status + ", date=" + date + "]";
+		return "Reimbursement [reimb_id_pk=" + reimb_id_pk + ", reimb_id=" + reimb_id + ", reimb_type=" + reimb_type
+				+ ", amount=" + amount + ", reimb_status=" + reimb_status + ", dates=" + dates + ", reimb_submit="
+				+ reimb_submit + ", reimb_resolve=" + reimb_resolve + ", reimb_description=" + reimb_description + "]";
 	}
 
 }

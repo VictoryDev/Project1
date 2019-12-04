@@ -1,7 +1,8 @@
 package expense;
 
+import java.sql.Date;
 import java.sql.Timestamp;
-import java.util.Date;
+
 
 public class Reimbursement {
 
@@ -10,7 +11,7 @@ public class Reimbursement {
 	private String reimb_type;
 	private double amount;
 	private String reimb_status;
-	private Date dates;
+	private Timestamp dates;
 	private Timestamp reimb_submit;
 	private Timestamp reimb_resolve;
 	private String reimb_description;
@@ -51,19 +52,19 @@ public class Reimbursement {
 		this.amount = amount;
 	}
 
-	public String getStatus() {
+	public String getReimb_status() {
 		return reimb_status;
 	}
 
-	public void setStatus(String reimb_status) {
+	public void setReimb_status(String reimb_status) {
 		this.reimb_status = reimb_status;
 	}
 
-	public Date getDates() {
+	public Timestamp getDates() {
 		return dates;
 	}
 
-	public void setDate(Date dates) {
+	public void setDate(Timestamp dates) {
 		this.dates = dates;
 	}
 
@@ -92,7 +93,7 @@ public class Reimbursement {
 	}
 
 	public Reimbursement(int reimb_id_pk, int reimb_id, String reimb_type, double amount, String reimb_status,
-			Date dates, Timestamp reimb_submit, Timestamp reimb_resolve, String reimb_description) {
+			Timestamp dates, Timestamp reimb_submit, Timestamp reimb_resolve, String reimb_description) {
 		super();
 		this.reimb_id_pk = reimb_id_pk;
 		this.reimb_id = reimb_id;

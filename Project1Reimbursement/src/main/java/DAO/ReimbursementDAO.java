@@ -1,12 +1,20 @@
 package DAO;
+import java.util.List;
+
 import expense.Reimbursement;
 
 public interface ReimbursementDAO {
 
-	public int insertReimbursement(Reimbursement reimb);
-	public Reimbursement selectReimbursement(int id);
+		// CREATE
+				public int insertReimbursement(Reimbursement r);
+				// READ
+				public Reimbursement selectReimbursementID(int id);
+				public List<Reimbursement> selectAllReimbursement();
+				// UPDATE
+				public int updateReimbursement(Reimbursement r);
+	}
 	
-}
+
 
 
 

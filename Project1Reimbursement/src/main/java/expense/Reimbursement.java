@@ -15,10 +15,41 @@ public class Reimbursement {
 	private Timestamp reimb_submit;
 	private Timestamp reimb_resolve;
 	private String reimb_description;
+	private int author_id;
+	private int resolver_id;
 
 	public Reimbursement() {
 		super();
 	}
+
+	@Override
+	public String toString() {
+		return "Reimbursement [reimb_id_pk=" + reimb_id_pk + ", reimb_id=" + reimb_id + ", reimb_type=" + reimb_type
+				+ ", amount=" + amount + ", reimb_status=" + reimb_status + ", dates=" + dates + ", reimb_submit="
+				+ reimb_submit + ", reimb_resolve=" + reimb_resolve + ", reimb_description=" + reimb_description
+				+ ", author_id=" + author_id + ", resolver_id=" + resolver_id + "]";
+	}
+
+
+
+	public Reimbursement(int reimb_id_pk, int reimb_id, String reimb_type, double amount, String reimb_status,
+			Timestamp dates, Timestamp reimb_submit, Timestamp reimb_resolve, String reimb_description, int author_id,
+			int resolver_id) {
+		super();
+		this.reimb_id_pk = reimb_id_pk;
+		this.reimb_id = reimb_id;
+		this.reimb_type = reimb_type;
+		this.amount = amount;
+		this.reimb_status = reimb_status;
+		this.dates = dates;
+		this.reimb_submit = reimb_submit;
+		this.reimb_resolve = reimb_resolve;
+		this.reimb_description = reimb_description;
+		this.author_id = author_id;
+		this.resolver_id = resolver_id;
+	}
+
+
 
 	public int getReimb_id_pk() {
 		return reimb_id_pk;
@@ -64,7 +95,7 @@ public class Reimbursement {
 		return dates;
 	}
 
-	public void setDate(Timestamp dates) {
+	public void setDates(Timestamp dates) {
 		this.dates = dates;
 	}
 
@@ -92,25 +123,20 @@ public class Reimbursement {
 		this.reimb_description = reimb_description;
 	}
 
-	public Reimbursement(int reimb_id_pk, int reimb_id, String reimb_type, double amount, String reimb_status,
-			Timestamp dates, Timestamp reimb_submit, Timestamp reimb_resolve, String reimb_description) {
-		super();
-		this.reimb_id_pk = reimb_id_pk;
-		this.reimb_id = reimb_id;
-		this.reimb_type = reimb_type;
-		this.amount = amount;
-		this.reimb_status = reimb_status;
-		this.dates = dates;
-		this.reimb_submit = reimb_submit;
-		this.reimb_resolve = reimb_resolve;
-		this.reimb_description = reimb_description;
+	public int getAuthor_id() {
+		return author_id;
 	}
 
-	@Override
-	public String toString() {
-		return "Reimbursement [reimb_id_pk=" + reimb_id_pk + ", reimb_id=" + reimb_id + ", reimb_type=" + reimb_type
-				+ ", amount=" + amount + ", reimb_status=" + reimb_status + ", dates=" + dates + ", reimb_submit="
-				+ reimb_submit + ", reimb_resolve=" + reimb_resolve + ", reimb_description=" + reimb_description + "]";
+	public void setAuthor_id(int author_id) {
+		this.author_id = author_id;
+	}
+
+	public int getResolver_id() {
+		return resolver_id;
+	}
+
+	public void setResolver_id(int resolver_id) {
+		this.resolver_id = resolver_id;
 	}
 
 }

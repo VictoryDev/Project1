@@ -12,17 +12,17 @@ public class RequestHelper {
 
 		switch (request.getRequestURI()) {
 
-		case "/Project1Reimbursement/html/index.do":
+		case "/Project1Reimbursement/html/login.do":
 			return LoginController.Login(request);
 
-		case "/Project1Reimbursement/html/index.do":
+		case "/Project1Reimbursement/html/register.do":
 			return RegisterController.Register(request);
 		case "/Project1Reimbursement/html/empDashboard.do":
 			return EmpDashboard.EmpDash(request);
-		case "/Project1Reimbursement/html/fManDashboard.do":
-			return fManDashboard.fManDash(request);
+//		case "/Project1Reimbursement/html/fManDashboard.do":
+//			return fManDashboard.fManDash(request);
 		default:
-			return "/html/Index.html";
+			return "/html/index.html";
 		}
 
 	}

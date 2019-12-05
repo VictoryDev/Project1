@@ -10,6 +10,7 @@ public class Employee {
 	private String passwords;
 	private String employee_role;
 
+
 	public Employee() {
 	}
 
@@ -23,7 +24,9 @@ public class Employee {
 		this.username = username;
 		this.passwords = passwords;
 		this.employee_role = employee_role;
+
 	}
+
 
 	public int getEmployee_id_pk() {
 		return employee_id_pk;
@@ -73,12 +76,6 @@ public class Employee {
 		this.passwords = passwords;
 	}
 
-	@Override
-	public String toString() {
-		return "Employee [employee_id_pk=" + employee_id_pk + ", firstname=" + firstname + ", lastname=" + lastname
-				+ ", email=" + email + ", username=" + username + ", passwords=" + passwords + ", employee_role="
-				+ employee_role + "]";
-	}
 
 	public String getEmployee_role() {
 		return employee_role;
@@ -87,5 +84,13 @@ public class Employee {
 	public void setEmployee_role(String employee_role) {
 		this.employee_role = employee_role;
 	}
+
+	@Override
+	public String toString() {
+		return "Employee [employee_id_pk=" + employee_id_pk + ", firstname=" + firstname + ", lastname=" + lastname
+				+ ", email=" + email + ", username=" + username + ", passwords=" + passwords + ", employee_role="
+				+ employee_role + "]";
+	}
+	
 
 }

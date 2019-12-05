@@ -6,16 +6,16 @@ public interface EmployeeDAO {
 
 	// CRUD methods:
 	// Create
-	public boolean insertEmployee(Employee empl);
+	public int insertEmployee(Employee e);
 	
-	// Read
-	public Employee getEmployeeByID(int id);
-	public Employee getEmployeeByUsername(String username); 
-	
-	// Update
-	public boolean updateEmployee(Employee empl);
-	public boolean updateEmployeePassword(int id, String newPassword);
-	
-	// Delete
+//	// Read
+//	public Employee getEmployeeByID(int id);
+	public Employee getEmployeeByUsername(String username, String passwords); 
+//	
+//	// Update
+//	public boolean updateEmployee(Employee empl);
+//	public boolean updateEmployeePassword(int id, String newPassword);
+//	
+//	// Delete
 	
 }

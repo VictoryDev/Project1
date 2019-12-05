@@ -160,19 +160,19 @@
 
         <!-- Submit New Reimbursement Ticket -->
         <section id="emp_new_reim">
-            <form>
+            <form method="POST", action="empDashboard.do">
                 <h1>Submit New Reimbursment Ticket</h1>
                 <div class="form-group">
-                    <label for="reim_Emp_ID">Employee ID</label>
-                    <input type="text" class="form-control" id="reim_Emp_ID" placeholder="000">
+                    <!-- <label for="reimb_id">Reimbursement ID</label>
+                    <input type="text" class="form-control" id="reimb_id" placeholder="000" name="reimb_id"> -->
                     <label for="reim_First_Name">First name</label>
-                    <input type="text" class="form-control" id="reim_First_Name" placeholder="James">
+                    <input type="text" class="form-control" id="reim_First_Name" placeholder="James" name="firstName">
                     <label for="reim_Last_Name">Last name</label>
-                    <input type="text" class="form-control" id="reim_Last_Name" placeholder="Bond">
+                    <input type="text" class="form-control" id="reim_Last_Name" placeholder="Bond" name="lastName">
                 </div>
                 <div class="form-group">
-                    <label for="reim_type">Reimbursement Type</label>
-                    <select class="form-control" id="reim_type">
+                    <label for="reimb_type">Reimbursement Type</label>
+                    <select class="form-control" id="reim_type" name="reimb_type">
                         <option>Food</option>
                         <option>Lodging</option>
                         <option>Travel</option>
@@ -190,7 +190,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><input type="date" placeholder="date"></input></td>
+                                <td><input type="date" placeholder="date" name="dates"></input></td>
                                 <td><textarea rows="2" cols="50" placeholder="Description"></textarea></td>
                                 <td><input type="number" placeholder="Reimbursement Cost"></input></td>
                             </tr>

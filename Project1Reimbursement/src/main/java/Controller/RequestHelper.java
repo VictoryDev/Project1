@@ -19,8 +19,8 @@ public class RequestHelper {
 			return RegisterController.Register(request);
 		case "/Project1Reimbursement/html/empDashboard.do":
 			return EmpDashboard.EmpDash(request);
-//		case "/Project1Reimbursement/html/fManDashboard.do":
-//			return fManDashboard.fManDash(request);
+		case "/Project1Reimbursement/html/fManDashboard.do":
+			return fManDashboard.fManDash(request);
 		default:
 			return "/html/index.html";
 		}

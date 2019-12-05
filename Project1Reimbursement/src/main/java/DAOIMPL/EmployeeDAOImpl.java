@@ -36,7 +36,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			ps.setString(3, e.getEmail());
 			ps.setString(4, e.getUsername());
 			ps.setString(5, e.getPasswords());
-			if (e.getEmployee_role().equals("Employee")) {
+			if (e.getEmployee_role() == "Employee") {
 				ps.setInt(6, 1);
 
 			} else {
@@ -58,18 +58,18 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	// }
 	//
 	@Override
-	public Employee getEmployeeByUsername(String username, String passwords) {
+	public Employee getEmployeeByUsername(String poo, String passwords) {
 		Employee ticket = null;
 		try (Connection conn = DriverManager.getConnection(urL, username, password)) {
 			PreparedStatement ps = conn.prepareStatement("SELECT * FROM Employee WHERE username=? AND passwords=?");
 			System.out.println("INSIDE EMPLOYEE LOGIN");
-			ps.setString(1, username);
+			ps.setString(1, poo);
 			ps.setString(2, passwords);
 			ResultSet rs = ps.executeQuery();
-			System.out.println("ajsjsj");
 			while (rs.next()) {
-				ticket = new Employee(rs.getInt("employee_id_pk"), rs.getString("firstname"),rs.getString("lastname"),rs.getString("email"),rs.getString("username"),rs.getString("passwords"),rs.getString("employee_role"));
+				ticket = new Employee(rs.getInt(1), rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7));
 			}
+			System.out.println(ticket.getEmployee_role());
 			System.out.println(ticket);
 			System.out.println("Selected by Employee ID complete");
 			return ticket;

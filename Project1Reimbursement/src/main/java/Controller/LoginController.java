@@ -10,15 +10,22 @@ public class LoginController {
 		String username = request.getParameter("username");
 		String password = request.getParameter("passwords");
 		
+		
 		EmployeeDAOImpl edi = new EmployeeDAOImpl();
 		Employee e = new Employee();
 		e = edi.getEmployeeByUsername(username, password);
-		if(username.equals(e.getUsername()) && password.equals(e.getPasswords())) {
+		System.out.println(e.getEmployee_role());
+		if(e.getEmployee_role().equals("1")) {
 			request.getSession().setAttribute("username", e);
 			return "/html/empDashboard.html";
+		} else if(e.getEmployee_role().equals("2")) {
+			request.getSession().setAttribute("username", e);
+			return "/html/fManDashboard.html";
 		}
+		else {
 		
 		return "/html/index.html";
+		}
 		
 	}
 //		System.out.println("Inside Login Controller");

@@ -13,17 +13,10 @@ public class RegisterController {
 		String lastname = request.getParameter("lastname");
 		String email = request.getParameter("email");
 		String employee_role = request.getParameter("role");
-		System.out.println(employee_role);
 		
 		int id = 1;
-		Employee empl = new Employee(id, username, passwords, firstname, lastname, email, employee_role);
-		System.out.println("Rwguster controller" + empl);
-//		empl.setUsername(username);
-//		empl.setPasswords(passwords);
-//		empl.setFirstname(firstname);
-//		empl.setLastname(lastname);
-//		empl.setEmail(email);
-//		empl.setEmployee_role(employee_role);
+		Employee empl = new Employee(id, firstname, lastname, email, username, passwords, employee_role);
+
 		
 		EmployeeDAOImpl edi = new EmployeeDAOImpl();
 		edi.insertEmployee(empl);

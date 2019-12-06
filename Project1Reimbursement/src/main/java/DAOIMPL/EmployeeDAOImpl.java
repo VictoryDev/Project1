@@ -11,6 +11,7 @@ import expense.Employee;
 import expense.Reimbursement;
 
 public class EmployeeDAOImpl implements EmployeeDAO {
+	
 	static {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -31,20 +32,25 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			System.out.println("Inside DAO");
 			PreparedStatement ps = conn.prepareStatement(
 					"INSERT INTO Employee (firstname, lastname, email, username, passwords, employee_role_fk) VALUES(?,?,?,?,?,?)");
+			System.out.println("finish preparestatement");
 			ps.setString(1, e.getFirstname());
 			ps.setString(2, e.getLastname());
 			ps.setString(3, e.getEmail());
 			ps.setString(4, e.getUsername());
 			ps.setString(5, e.getPasswords());
-			if (e.getEmployee_role() == "Employee") {
+			System.out.println("Before if employee role");
+			System.out.println(e.getEmployee_role());
+			if (e.getEmployee_role().equals("Employee")) {
 				ps.setInt(6, 1);
-
+				System.out.println("inside if employee role 1");
 			} else {
 				ps.setInt(6, 2);
-
+				System.out.println("inside if employee role 2");
 			}
-
+			System.out.println("bottome of employee role before execute update");
+			System.out.println("this is the register input "+e);
 			ps.executeUpdate();
+			System.out.println("insertedEmployee done");
 			System.out.println(insertedEmp);
 		} catch (SQLException f) {
 			f.printStackTrace();

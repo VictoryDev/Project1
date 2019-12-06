@@ -1,10 +1,12 @@
 package DAOIMPL;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,18 +21,29 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 		@Override
 		public int insertReimbursement(Reimbursement r) {
 			try (Connection conn = DriverManager.getConnection(urL, username, password)) {
+				
 				PreparedStatement ps = conn.prepareStatement(
-						"INSERT INTO Reimbursement(reimb_id, reimb_type, amount, reimb_status, dates, reimb_submit, reimb_resolve, reimb_description,authoer_id,resolver_id) VALUES(?,?,?,?,?,?,?,?,?,?)");
-				ps.setInt(1, r.getReimb_id());
-				ps.setString(2, r.getReimb_type());
-				ps.setDouble(3, r.getAmount());
-				ps.setString(4, r.getReimb_status());
-				ps.setString(5, r.getDates());
-				ps.setTimestamp(4, r.getReimb_submit());
-				ps.setTimestamp(7, r.getReimb_resolve());
-				ps.setString(8, r.getReimb_description());
-				ps.setInt(9, r.getAuthor_id());
-				ps.setInt(10, r.getResolver_id());
+						"INSERT INTO Reimbursement(amount, dates, reimb_desc, reimb_submit, reimb_resolve, reimb_author, reimb_resolver, reimb_status, reimb_type) VALUES(?,?,?,?,?,?,?,1,?)");
+				ps.setDouble(1, r.getAmount());
+				ps.setString(2, r.getDates());
+				ps.setString(3, r.getReimb_description());
+				ps.setString(4, r.getReimb_submit());
+				ps.setString(5, r.getReimb_resolve());
+				ps.setInt(6, r.getAuthor_id());
+				ps.setInt(7, r.getResolver_id());
+				ps.setInt(8, r.getReimb_status());				
+				if (r.getReimb_type() == 1) {
+					ps.setInt(9, 1);
+					System.out.println("inside FOOOD");
+				} else if (r.getReimb_type() == 2){
+					ps.setInt(9, 2);
+					System.out.println("inside Lodging");
+				}else if (r.getReimb_type() == 3){
+					ps.setInt(9, 3);
+					System.out.println("inside Other");
+				}else {
+					ps.setInt(9, 4);
+				}
 				ps.executeUpdate();
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -65,8 +78,8 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 				PreparedStatement ps = conn.prepareStatement("SELECT * FROM Reimbursement");
 				ResultSet rs = ps.executeQuery();
 				while (rs.next()) {
-					array.add(new Reimbursement(rs.getInt("reimb_id_pk"), rs.getInt("reimb_id"), rs.getString("reimb_type"), rs.getDouble("amount"),
-							rs.getString("reimb_status"), rs.getString("dates"), rs.getTimestamp("reimb_submit"), rs.getTimestamp("reimb_resolve"),
+					array.add(new Reimbursement(rs.getInt("reimb_id_pk"), rs.getInt("reimb_id"), rs.getInt("reimb_type"), rs.getDouble("amount"),
+							rs.getInt("reimb_status"), rs.getString("dates"), rs.getString("reimb_submit"), rs.getString("reimb_resolve"),
 							rs.getString("reimb_description"), rs.getInt("author_id"), rs.getInt("resolver_id")));
 				}
 				System.out.println(array);
@@ -80,7 +93,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 		public int updateReimbursement(Reimbursement r) {
 			try (Connection conn = DriverManager.getConnection(urL, username, password)) {
 				PreparedStatement ps = conn.prepareStatement("UPDATE Reimbursement SET reimb_status= (?) WHERE reimb_id=?");
-				ps.setString(1, r.getReimb_status());
+				ps.setInt(1, r.getReimb_status());
 				ps.setInt(4, r.getReimb_id());
 				ps.executeUpdate();
 			} catch (SQLException e) {

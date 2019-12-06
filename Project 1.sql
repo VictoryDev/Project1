@@ -11,16 +11,17 @@ reimb_status VARCHAR2(50)
 
 CREATE TABLE Reimbursement(
 reimb_id_pk NUMBER PRIMARY KEY,
-reimb_id NUMBER,
 amount NUMBER,
-dates DATE,
+dates VARCHAR2(50),
 reimb_desc VARCHAR2(250),
-reimb_submit TIMESTAMP,
-reimb_resolve TIMESTAMP,
+reimb_submit VARCHAR2(50),
+reimb_resolve VARCHAR2(50),
 reimb_author NUMBER,
 reimb_resolver NUMBER,
-CONSTRAINT reimb_status_fk FOREIGN KEY (reimb_id_pk) REFERENCES Reimbursement_Status(reimb_status_id),
-CONSTRAINT reimb_type_fk FOREIGN KEY (reimb_id_pk) REFERENCES Reimbursement_Type (reimb_type_id)
+reimb_status_fk NUMBER,
+reimb_type_fk NUMBER,
+CONSTRAINT reimb_status_fk FOREIGN KEY (reimb_status_fk) REFERENCES Reimbursement_Status(reimb_status_id),
+CONSTRAINT reimb_type_fk FOREIGN KEY (reimb_type_fk) REFERENCES Reimbursement_Type (reimb_type_id)
 );
 
 CREATE TABLE Employee_Role(
@@ -43,11 +44,29 @@ CONSTRAINT employee_role_fk FOREIGN KEY (employee_role_fk) REFERENCES Employee_R
 INSERT INTO employee_role VALUES(1, 'Employee');
 INSERT INTO employee_role VALUES(2, 'Financial Manager');
 
+INSERT INTO reimbursement_type VALUES (1, 'Food');
+INSERT INTO reimbursement_type VALUES (2, 'Travel');
+INSERT INTO reimbursement_type VALUES (3, 'Lodging');
+INSERT INTO reimbursement_type VALUES (4, 'Other');
+
+INSERT INTO reimbursement_status VALUES (1, 'pending');
+INSERT INTO reimbursement_status VALUES (2, 'approved');
+INSERT INTO reimbursement_status VALUES (3, 'denied');
+
 SELECT * FROM Employee_Role;
 SELECT * FROM Employee;
 SELECT * FROM Reimbursement;
 SELECT * FROM Reimbursement_Type;
 SELECT * FROM Reimbursement_Status;
+
+DROP TABLE Employee;
+DROP TABLE Employee_Role;
+DROP TABLE Reimbursement;
+DROP TABLE Reimbursement_Type;
+DROP TABLE Reimbursement_Status;
+
+
+
 --------------------------------------------------------------------------------------------
 --Sequence and Trigger
 --SEQUENCE
@@ -68,26 +87,6 @@ FOR EACH ROW
 BEGIN
     IF :new.reimb_id_pk IS NULL THEN
     SELECT reimb_seq.nextval INTO :new.reimb_id_pk FROM dual;
-    END IF;
-END;
-/
-
-
---SEQUENCE for the random reimbursement number id
---An object/entity that will maintain a counter for you
-CREATE SEQUENCE reimb_id_seq
-    START WITH 7 
-    INCREMENT BY 86;
-    --this sequence will be used to handle the id field for employees
-/
-
-
-CREATE OR REPLACE TRIGGER reimb_id_seq_trigger
-BEFORE INSERT ON Reimbursement --when and what action happens ('after')
-FOR EACH ROW
-BEGIN
-    IF :new.reimb_id IS NULL THEN
-    SELECT reimb_id_seq.nextval INTO :new.reimb_id FROM dual;
     END IF;
 END;
 /
@@ -114,10 +113,5 @@ BEGIN
 END;
 /
 
-DROP TABLE Employee;
-DROP TABLE Employee_Role;
-DROP TABLE Reimbursement;
-DROP TABLE Reimbursement_Type;
-DROP TABLE Reimbursement_Status;
 
 

@@ -17,10 +17,15 @@ public class RequestHelper {
 
 		case "/Project1Reimbursement/html/register.do":
 			return RegisterController.Register(request);
+			
 		case "/Project1Reimbursement/html/empDashboard.do":
 			return EmpDashboard.EmpDash(request);
+			
 		case "/Project1Reimbursement/html/fManDashboard.do":
 			return fManDashboard.fManDash(request);
+			
+		case "/Project1Reimbursement/html/session.do":
+			return SessionController.Home(request,response);
 		default:
 			return "/html/index.html";
 		}

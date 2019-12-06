@@ -1,22 +1,28 @@
 package expense;
 
-import java.sql.Timestamp;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 
 public class Reimbursement {
+	
+	String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date(0));
+	Employee e = new Employee();
 
 	private int reimb_id_pk;
 	private int reimb_id;
-	private String reimb_type;
+	private int reimb_type;
 	private double amount;
-	private String reimb_status;
-	private String dates;
-	private Timestamp reimb_submit;
-	private Timestamp reimb_resolve;
+	private int reimb_status;
+	private String dates = timeStamp;
+	private String reimb_submit = timeStamp;
+	private String reimb_resolve = timeStamp;
 	private String reimb_description;
-	private int author_id;
-	private int resolver_id;
+	private int author_id = e.getEmployee_id_pk();
+	private int resolver_id = 0;
 
+	
+	
 	public Reimbursement() {
 		super();
 	}
@@ -31,8 +37,8 @@ public class Reimbursement {
 
 
 
-	public Reimbursement(int reimb_id_pk, int reimb_id, String reimb_type, double amount, String reimb_status,
-			String dates, Timestamp reimb_submit, Timestamp reimb_resolve, String reimb_description, int author_id,
+	public Reimbursement(int reimb_id_pk, int reimb_id, int reimb_type, double amount, int reimb_status,
+			String dates, String reimb_submit, String reimb_resolve, String reimb_description, int author_id,
 			int resolver_id) {
 		super();
 		this.reimb_id_pk = reimb_id_pk;
@@ -66,11 +72,11 @@ public class Reimbursement {
 		this.reimb_id = reimb_id;
 	}
 
-	public String getReimb_type() {
+	public int getReimb_type() {
 		return reimb_type;
 	}
 
-	public void setReimb_type(String reimb_type) {
+	public void setReimb_type(int reimb_type) {
 		this.reimb_type = reimb_type;
 	}
 
@@ -82,11 +88,11 @@ public class Reimbursement {
 		this.amount = amount;
 	}
 
-	public String getReimb_status() {
+	public int getReimb_status() {
 		return reimb_status;
 	}
 
-	public void setReimb_status(String reimb_status) {
+	public void setReimb_status(int reimb_status) {
 		this.reimb_status = reimb_status;
 	}
 
@@ -98,19 +104,19 @@ public class Reimbursement {
 		this.dates = dates;
 	}
 
-	public Timestamp getReimb_submit() {
+	public String getReimb_submit() {
 		return reimb_submit;
 	}
 
-	public void setReimb_submit(Timestamp reimb_submit) {
+	public void setReimb_submit(String reimb_submit) {
 		this.reimb_submit = reimb_submit;
 	}
 
-	public Timestamp getReimb_resolve() {
+	public String getReimb_resolve() {
 		return reimb_resolve;
 	}
 
-	public void setReimb_resolve(Timestamp reimb_resolve) {
+	public void setReimb_resolve(String reimb_resolve) {
 		this.reimb_resolve = reimb_resolve;
 	}
 

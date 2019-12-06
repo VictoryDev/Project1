@@ -33,7 +33,9 @@
             <a class="navbar-brand" href="#">EST.2019</a>
         </nav>
         <div class="emp_hero">
-            <h1 id="hello">Welcome Employee</h1>
+        
+        <!-- session grab user first and last name -->
+            <h1 id="hello"></h1>
 
         </div>
         <!-- View Past Reimbursement -->
@@ -160,23 +162,25 @@
 
         <!-- Submit New Reimbursement Ticket -->
         <section id="emp_new_reim">
-            <form method="POST", action="empDashboard.do">
+            <form method="POST" action="empDashboard.do">
                 <h1>Submit New Reimbursment Ticket</h1>
                 <div class="form-group">
-                    <!-- <label for="reimb_id">Reimbursement ID</label>
-                    <input type="text" class="form-control" id="reimb_id" placeholder="000" name="reimb_id"> -->
-                    <label for="reim_First_Name">First name</label>
-                    <input type="text" class="form-control" id="reim_First_Name" placeholder="James" name="firstName">
-                    <label for="reim_Last_Name">Last name</label>
-                    <input type="text" class="form-control" id="reim_Last_Name" placeholder="Bond" name="lastName">
+                    <label for="emp_id" id="emp_id"></label>
+                    <br>
+                    <label for="emp_First_Name" id="firstName"></label>
+                    <br>
+                    <label for="emp_Last_Name" id="lastName"></label>
+                    <br>
+                    <label for="email" id="email"></label>
+                    
                 </div>
                 <div class="form-group">
                     <label for="reimb_type">Reimbursement Type</label>
-                    <select class="form-control" id="reim_type" name="reimb_type">
-                        <option>Food</option>
-                        <option>Lodging</option>
-                        <option>Travel</option>
-                        <option>Other</option>
+                    <select class="form-control" id="reimb_type" name="reimb_type">
+                        <option value="1">Food</option>
+                        <option value="2">Travel</option>
+                        <option value="3">Lodging</option>
+                        <option value="4">Other</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -191,8 +195,11 @@
                         <tbody>
                             <tr>
                                 <td><input type="date" placeholder="date" name="dates"></input></td>
-                                <td><textarea rows="2" cols="50" placeholder="Description"></textarea></td>
-                                <td><input type="number" placeholder="Reimbursement Cost"></input></td>
+                                <td><textarea rows="2" cols="50" placeholder="Description" name="reimb_desc"></textarea></td>
+                                <td><input type="number" placeholder="Reimbursement Cost" name="amount"></input></td>
+                                <td><select name="reimb_status">
+                                <option value = "1">Pending</option>
+                                </select></td>
                             </tr>
                             <tr>
                                 <td><input class="btn btn-dark" type="submit"></td>
@@ -203,6 +210,7 @@
             </form>
         </section>
     </div> 
+    <script type="text/javascript" src="../js/Home.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

@@ -24,7 +24,7 @@ public class LoginController {
 		}
 		else {
 		
-		return "/html/index.html";
+			return "/html/index.html";
 		}
 		
 	}

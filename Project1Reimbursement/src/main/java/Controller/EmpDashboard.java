@@ -12,24 +12,26 @@ import expense.Reimbursement;
 public class EmpDashboard {
 	
 		public static String EmpDash(HttpServletRequest request) {
-			String firstname = request.getParameter("firstName");
-			String lastname = request.getParameter("lastName");
-			String reimb_type = request.getParameter("reimb_type");
+			int reimb_type = Integer.parseInt(request.getParameter("reimb_type"));
 			String dates = request.getParameter("dates");
-			String email = request.getParameter("email");			
+			String reimb_desc = request.getParameter("reimb_desc");
+			double amount = Double.valueOf(request.getParameter("amount"));
+			int reimb_status = Integer.parseInt(request.getParameter("reimb_status"));
 			
-			Employee empl = new Employee();
+			
 			Reimbursement reimb = new Reimbursement();
-			empl.setFirstname(firstname);
-			empl.setLastname(lastname);
-			empl.setEmail(email);
-			reimb.setDates(dates);
 			reimb.setReimb_type(reimb_type);
+			reimb.setDates(dates);
+			reimb.setReimb_description(reimb_desc);
+			reimb.setAmount(amount);
+			reimb.setReimb_status(reimb_status);
 			
-			EmployeeDAOImpl edi = new EmployeeDAOImpl();
+			
 			ReimbursementDAOImpl rdi = new ReimbursementDAOImpl();
-			edi.insertEmployee(empl);
+			rdi.insertReimbursement(reimb);
+			System.out.println(reimb);
 			
+			System.out.println("Done with Ticket Submission!");
 			return "/html/empDashboard.html";
 	}
 }

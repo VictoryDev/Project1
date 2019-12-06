@@ -2,27 +2,26 @@
  * 
  */
 
-window.onload = function(){
-	let xhttp = new XMLHttpRequest();
-	xhttp.open("GET" , 'http://localhost:8080/Project1Reimbursement/html/pastReimbursement.do',true);
-	xhttp.send();
-	console.log("inside past Reimbursement JS")
-}
 
 let buttonOne = document.getElementById("past_btn");
 buttonOne.addEventListener('click', getReimbursementInfo);
 
 function getReimbursementInfo(){
+	let xhttpStart = new XMLHttpRequest();
+	xhttpStart.open("GET" , 'http://localhost:8080/Project1Reimbursement/html/pastReimbursement.do',true);
+	xhttpStart.send();
+	
 	let xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function(){
 		if(xhttp.readyState == 4 && xhttp.status == 200){
 			console.log(xhttp.responseText);
 			let users = JSON.parse(xhttp.responseText);
 			setValues(users);
-			console.log("hi");
+			console.log(users);
+			console.log("hihi");
 		}
 	}
-	
+	console.log("before the past open send")
 	xhttp.open("GET" , 'http://localhost:8080/Project1Reimbursement/html/getPastReimbursement.do',true);
 	xhttp.send();
 }

@@ -16,9 +16,9 @@ import expense.Reimbursement;
 public class PendingReimbursementController {
 
 		public static String selectAllReimbursementByStatus(HttpServletRequest request ) {
-			
 			ReimbursementDAOImpl rdi = new ReimbursementDAOImpl();
 			List<Reimbursement> reimb = new ArrayList<Reimbursement>();
+			
 			reimb= rdi.selectAllReimbursementByStatus();
 			request.getSession().setAttribute("reimb_pending_array", reimb);
 			System.out.println("getSelectAllReimbursementByStatus ArrayList " + reimb);
@@ -29,7 +29,7 @@ public class PendingReimbursementController {
 		public static String getSelectAllReimbursementByStatus(HttpServletRequest request, HttpServletResponse response) {
 			
 			//retrieving the pet object from our session
-					ArrayList<Reimbursement> reimb = (ArrayList<Reimbursement>)request.getSession().getAttribute("reimb_array");
+					ArrayList<Reimbursement> reimb = (ArrayList<Reimbursement>)request.getSession().getAttribute("reimb_pending_array");
 					
 					//Marshalling Tool
 					//converting an object into a data format

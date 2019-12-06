@@ -1,17 +1,15 @@
 /**
  * 
  */
-window.onload = function(){
-	let xhttp = new XMLHttpRequest();
-	xhttp.open("GET" , 'http://localhost:8080/Project1Reimbursement/html/pendingReimbursement.do',true);
-	xhttp.send();
-	console.log("inside Pending Reimbursement JS")
-}
 
 let buttonTwo = document.getElementById("pending_btn");
 buttonTwo.addEventListener('click', getPendingReimbursementInfo);
 
 function getPendingReimbursementInfo(){
+	let xhttpStart = new XMLHttpRequest();
+	xhttpStart.open("GET" , 'http://localhost:8080/Project1Reimbursement/html/pendingReimbursement.do',true);
+	xhttpStart.send();
+	
 	let xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function(){
 		if(xhttp.readyState == 4 && xhttp.status == 200){

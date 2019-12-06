@@ -23,7 +23,7 @@ public class PastReimbursementController {
 		reimb= rdi.selectAllReimbursement();
 		request.getSession().setAttribute("reimb_array", reimb);
 		System.out.println("SelectAllReimbursement ArrayList " + reimb);
-
+		System.out.println("aksjdnaksjdhfajosdhfakjsdhfajdshfjd");
 		
 		return "/html/empDashboard.html";
 	}

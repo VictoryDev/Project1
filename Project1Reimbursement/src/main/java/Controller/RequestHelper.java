@@ -1,7 +1,11 @@
 package Controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import expense.Reimbursement;
 
 
 public class RequestHelper {
@@ -26,6 +30,19 @@ public class RequestHelper {
 			
 		case "/Project1Reimbursement/html/session.do":
 			return SessionController.Home(request,response);
+			
+		case "/Project1Reimbursement/html/pastReimbursement.do":
+			return PastReimbursementController.selectAllReimbursement(request);
+			
+		case "/Project1Reimbursement/html/getPastReimbursement.do":
+			return PastReimbursementController.getSelectAllReimbursement(request,response);
+
+//		case "/Project1Reimbursement/html/pendingReimbursement.do":
+//			return PendingReimbursementController(request);
+//			
+//		case "/Project1Reimbursement/html/getPendingReimbursement.do":
+//			return PendingReimbursementController.getSelectAllReimbursement(request,response);
+			
 		default:
 			return "/html/index.html";
 		}

@@ -10,51 +10,69 @@ public class Reimbursement {
 	Employee e = new Employee();
 
 	private int reimb_id_pk;
-	private int reimb_id;
-	private int reimb_type;
 	private double amount;
-	private int reimb_status;
 	private String dates = timeStamp;
 	private String reimb_submit = timeStamp;
-	private String reimb_resolve = timeStamp;
 	private String reimb_description;
+	private String reimb_resolve = timeStamp;
 	private int author_id = e.getEmployee_id_pk();
 	private int resolver_id = 0;
-
-	
+	private int reimb_status;
+	private int reimb_type;
 	
 	public Reimbursement() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
+	
+	
+	
+
+	public Reimbursement(int reimb_id_pk, double amount, String dates,
+			String reimb_submit, String reimb_description, String reimb_resolve, int author_id, int resolver_id,
+			int reimb_status, int reimb_type) {
+		super();
+		this.reimb_id_pk = reimb_id_pk;
+		this.amount = amount;
+		this.dates = dates;
+		this.reimb_submit = reimb_submit;
+		this.reimb_description = reimb_description;
+		this.reimb_resolve = reimb_resolve;
+		this.author_id = author_id;
+		this.resolver_id = resolver_id;
+		this.reimb_status = reimb_status;
+		this.reimb_type = reimb_type;
+	}
+
+
+
 
 	@Override
 	public String toString() {
-		return "Reimbursement [reimb_id_pk=" + reimb_id_pk + ", reimb_id=" + reimb_id + ", reimb_type=" + reimb_type
-				+ ", amount=" + amount + ", reimb_status=" + reimb_status + ", dates=" + dates + ", reimb_submit="
-				+ reimb_submit + ", reimb_resolve=" + reimb_resolve + ", reimb_description=" + reimb_description
-				+ ", author_id=" + author_id + ", resolver_id=" + resolver_id + "]";
+		return "Reimbursement [timeStamp=" + timeStamp + ", e=" + e + ", reimb_id_pk=" + reimb_id_pk + ", amount="
+				+ amount + ", dates=" + dates + ", reimb_submit=" + reimb_submit + ", reimb_description="
+				+ reimb_description + ", reimb_resolve=" + reimb_resolve + ", author_id=" + author_id + ", resolver_id="
+				+ resolver_id + ", reimb_status=" + reimb_status + ", reimb_type=" + reimb_type + "]";
 	}
 
 
 
-	public Reimbursement(int reimb_id_pk, int reimb_id, int reimb_type, double amount, int reimb_status,
-			String dates, String reimb_submit, String reimb_resolve, String reimb_description, int author_id,
-			int resolver_id) {
-		super();
-		this.reimb_id_pk = reimb_id_pk;
-		this.reimb_id = reimb_id;
-		this.reimb_type = reimb_type;
-		this.amount = amount;
-		this.reimb_status = reimb_status;
-		this.dates = dates;
-		this.reimb_submit = reimb_submit;
-		this.reimb_resolve = reimb_resolve;
-		this.reimb_description = reimb_description;
-		this.author_id = author_id;
-		this.resolver_id = resolver_id;
+
+	public String getTimeStamp() {
+		return timeStamp;
 	}
 
+	public void setTimeStamp(String timeStamp) {
+		this.timeStamp = timeStamp;
+	}
 
+	public Employee getE() {
+		return e;
+	}
+
+	public void setE(Employee e) {
+		this.e = e;
+	}
 
 	public int getReimb_id_pk() {
 		return reimb_id_pk;
@@ -64,36 +82,12 @@ public class Reimbursement {
 		this.reimb_id_pk = reimb_id_pk;
 	}
 
-	public int getReimb_id() {
-		return reimb_id;
-	}
-
-	public void setReimb_id(int reimb_id) {
-		this.reimb_id = reimb_id;
-	}
-
-	public int getReimb_type() {
-		return reimb_type;
-	}
-
-	public void setReimb_type(int reimb_type) {
-		this.reimb_type = reimb_type;
-	}
-
 	public double getAmount() {
 		return amount;
 	}
 
 	public void setAmount(double amount) {
 		this.amount = amount;
-	}
-
-	public int getReimb_status() {
-		return reimb_status;
-	}
-
-	public void setReimb_status(int reimb_status) {
-		this.reimb_status = reimb_status;
 	}
 
 	public String getDates() {
@@ -112,20 +106,20 @@ public class Reimbursement {
 		this.reimb_submit = reimb_submit;
 	}
 
-	public String getReimb_resolve() {
-		return reimb_resolve;
-	}
-
-	public void setReimb_resolve(String reimb_resolve) {
-		this.reimb_resolve = reimb_resolve;
-	}
-
 	public String getReimb_description() {
 		return reimb_description;
 	}
 
 	public void setReimb_description(String reimb_description) {
 		this.reimb_description = reimb_description;
+	}
+
+	public String getReimb_resolve() {
+		return reimb_resolve;
+	}
+
+	public void setReimb_resolve(String reimb_resolve) {
+		this.reimb_resolve = reimb_resolve;
 	}
 
 	public int getAuthor_id() {
@@ -144,4 +138,22 @@ public class Reimbursement {
 		this.resolver_id = resolver_id;
 	}
 
+	public int getReimb_status() {
+		return reimb_status;
+	}
+
+	public void setReimb_status(int reimb_status) {
+		this.reimb_status = reimb_status;
+	}
+
+	public int getReimb_type() {
+		return reimb_type;
+	}
+
+	public void setReimb_type(int reimb_type) {
+		this.reimb_type = reimb_type;
+	}
+
+	
+	
 }

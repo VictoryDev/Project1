@@ -23,7 +23,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 			try (Connection conn = DriverManager.getConnection(urL, username, password)) {
 				
 				PreparedStatement ps = conn.prepareStatement(
-						"INSERT INTO Reimbursement(amount, dates, reimb_desc, reimb_submit, reimb_resolve, reimb_author, reimb_resolver, reimb_status, reimb_type) VALUES(?,?,?,?,?,?,?,1,?)");
+						"INSERT INTO Reimbursement(amount, dates, reimb_desc, reimb_submit, reimb_resolve, reimb_author, reimb_resolver, reimb_status_fk, reimb_type_fk) VALUES(?,?,?,?,?,?,?,?,?)");
 				ps.setDouble(1, r.getAmount());
 				ps.setString(2, r.getDates());
 				ps.setString(3, r.getReimb_description());
@@ -31,18 +31,20 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 				ps.setString(5, r.getReimb_resolve());
 				ps.setInt(6, r.getAuthor_id());
 				ps.setInt(7, r.getResolver_id());
-				ps.setInt(8, r.getReimb_status());				
+				ps.setInt(8, r.getReimb_status());	
+				System.out.println(r.getReimb_type());
 				if (r.getReimb_type() == 1) {
-					ps.setInt(9, 1);
+					ps.setInt(9, r.getReimb_type());
 					System.out.println("inside FOOOD");
 				} else if (r.getReimb_type() == 2){
-					ps.setInt(9, 2);
+					ps.setInt(9, r.getReimb_type());
 					System.out.println("inside Lodging");
 				}else if (r.getReimb_type() == 3){
-					ps.setInt(9, 3);
+					System.out.println("top inside Other");
+					ps.setInt(9, r.getReimb_type());
 					System.out.println("inside Other");
 				}else {
-					ps.setInt(9, 4);
+					ps.setInt(9, r.getReimb_type());
 				}
 				ps.executeUpdate();
 			} catch (SQLException e) {
@@ -51,19 +53,19 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 			return 0;
 		}
 		
-//		public Reimbursement selectReimbursementByID(int id) {
+//		public Reimbursement selectReimbursementByStatus(int status) {
 //			Reimbursement ticket = null;
 //			try (Connection conn = DriverManager.getConnection(urL, username, password)) {
-//				PreparedStatement ps = conn.prepareStatement("SELECT * FROM Reimbursement WHERE reimb_id=?");
-//				ps.setInt(1, id);
+//				PreparedStatement ps = conn.prepareStatement("SELECT * FROM Reimbursement WHERE reimb_status=?");
+//				ps.setInt(1, status);
 //				ResultSet rs = ps.executeQuery();
 //				while (rs.next()) {
-//					ticket = new Reimbursement(rs.getInt("reimb_id"), rs.getDouble("amount"), rs.getTimestamp("dates"),
-//							rs.getTimestamp("reimb_submit"), rs.getTimestamp("reimb_resolve"), rs.getString("reimb_status"),
-//							rs.getString("reimb_type"));
+//					ticket = new Reimbursement(rs.getInt("reimb_id_pk"), rs.getDouble("amount"), rs.getString("dates"),
+//							rs.getString("reimb_desc"), rs.getString("reimb_submit"), rs.getString("reimb_resolve"), rs.getInt("reimb_author"),
+//							rs.getInt("reimb_resolver"), rs.getInt("reimb_status_fk"), rs.getInt("reimb_type_fk"));
 //				}
 //				System.out.println(ticket);
-//				System.out.println("Selected by Reimbursement id complete");
+//				System.out.println("Selected by Reimbursement Status complete");
 //				return ticket;
 //			} catch (SQLException e) {
 //				e.printStackTrace();
@@ -72,15 +74,16 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 //		}
 		
 		@Override
-		public List<Reimbursement> selectAllReimbursement() {
+		public List<Reimbursement> selectAllReimbursementByStatus() {
 			List<Reimbursement> array = new ArrayList<Reimbursement>();
+			System.out.println(array);
 			try (Connection conn = DriverManager.getConnection(urL, username, password)) {
-				PreparedStatement ps = conn.prepareStatement("SELECT * FROM Reimbursement");
+				PreparedStatement ps = conn.prepareStatement("SELECT * FROM Reimbursement WHERE reimb_status=1");
 				ResultSet rs = ps.executeQuery();
 				while (rs.next()) {
-					array.add(new Reimbursement(rs.getInt("reimb_id_pk"), rs.getInt("reimb_id"), rs.getInt("reimb_type"), rs.getDouble("amount"),
-							rs.getInt("reimb_status"), rs.getString("dates"), rs.getString("reimb_submit"), rs.getString("reimb_resolve"),
-							rs.getString("reimb_description"), rs.getInt("author_id"), rs.getInt("resolver_id")));
+					array.add(new Reimbursement(rs.getInt("reimb_id_pk"), rs.getDouble("amount"), rs.getString("dates"),
+							rs.getString("reimb_desc"), rs.getString("reimb_submit"), rs.getString("reimb_resolve"), rs.getInt("reimb_author"),
+							rs.getInt("reimb_resolver"), rs.getInt("reimb_status_fk"), rs.getInt("reimb_type_fk")));
 				}
 				System.out.println(array);
 				System.out.println("Select All Reimbursement complete");
@@ -90,21 +93,37 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 			return array;
 		}
 		
-		public int updateReimbursement(Reimbursement r) {
+		@Override
+		public List<Reimbursement> selectAllReimbursement() {
+			List<Reimbursement> array = new ArrayList<Reimbursement>();
+			System.out.println(array);
 			try (Connection conn = DriverManager.getConnection(urL, username, password)) {
-				PreparedStatement ps = conn.prepareStatement("UPDATE Reimbursement SET reimb_status= (?) WHERE reimb_id=?");
-				ps.setInt(1, r.getReimb_status());
-				ps.setInt(4, r.getReimb_id());
-				ps.executeUpdate();
+				PreparedStatement ps = conn.prepareStatement("SELECT * FROM Reimbursement");
+				ResultSet rs = ps.executeQuery();
+				while (rs.next()) {
+					array.add(new Reimbursement(rs.getInt("reimb_id_pk"), rs.getDouble("amount"), rs.getString("dates"),
+							rs.getString("reimb_desc"), rs.getString("reimb_submit"), rs.getString("reimb_resolve"), rs.getInt("reimb_author"),
+							rs.getInt("reimb_resolver"), rs.getInt("reimb_status_fk"), rs.getInt("reimb_type_fk")));
+				}
+				System.out.println(array);
+				System.out.println("Select All Reimbursement complete");
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			return 0;
+			return array;
 		}
+		
+//		public int updateReimbursement(Reimbursement r) {
+//			try (Connection conn = DriverManager.getConnection(urL, username, password)) {
+//				PreparedStatement ps = conn.prepareStatement("UPDATE Reimbursement SET reimb_status= (?) WHERE reimb_id=?");
+//				ps.setInt(1, r.getReimb_status());
+//				ps.setInt(4, r.getReimb_id());
+//				ps.executeUpdate();
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//			}
+//			return 0;
+//		}
 
-		@Override
-		public Reimbursement selectReimbursementID(int id) {
-			// TODO Auto-generated method stub
-			return null;
-		}
+	
 	}

@@ -20,7 +20,7 @@ function getEmployeeInfo(){
 	
 	xhttp.open("GET" , 'http://localhost:8080/Project1Reimbursement/html/session.do',true);
 	xhttp.send();
-}s
+}
 
 function setValues(username){
 	document.getElementById("hello").innerHTML = "Welcome " + username.firstname + " "+ username.lastname;
@@ -29,4 +29,6 @@ function setValues(username){
 	document.getElementById("lastName").innerHTML = "Employee Last name..." + username.lastname;
 	document.getElementById("email").innerHTML = "Employee Email..." + username.email;
 	
+
 }
+

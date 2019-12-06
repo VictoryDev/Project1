@@ -6,10 +6,10 @@ window.onload = function(){
 	let xhttp = new XMLHttpRequest();
 	xhttp.open("GET" , 'http://localhost:8080/Project1Reimbursement/html/pastReimbursement.do',true);
 	xhttp.send();
-	console.log("inside get Reimbursement JS")
+	console.log("inside past Reimbursement JS")
 }
 
-let buttonOne = document.getElementById("btn");
+let buttonOne = document.getElementById("past_btn");
 buttonOne.addEventListener('click', getReimbursementInfo);
 
 function getReimbursementInfo(){
@@ -17,8 +17,8 @@ function getReimbursementInfo(){
 	xhttp.onreadystatechange = function(){
 		if(xhttp.readyState == 4 && xhttp.status == 200){
 			console.log(xhttp.responseText);
-			let username = JSON.parse(xhttp.responseText);
-			setValues(username);
+			let users = JSON.parse(xhttp.responseText);
+			setValues(users);
 			console.log("hi");
 		}
 	}
@@ -27,7 +27,7 @@ function getReimbursementInfo(){
 	xhttp.send();
 }
 
-function setValues(username){
+function setValues(users){
 	
 	var table = document.createElement('table');
 	table.setAttribute("class", "table table-hover table-dark");
@@ -62,7 +62,7 @@ function setValues(username){
 	
 	table.appendChild(tr);
 
-	for (var i = 0; i < username.length; i++){
+	for (var i = 0; i < users.length; i++){
 		var tr = document.createElement('tr');
 		
 		var td1 = document.createElement('td');
@@ -72,12 +72,12 @@ function setValues(username){
 		var td5 = document.createElement('td');
 		var td6 = document.createElement('td');
 		
-		var text1 = document.createTextNode(username[i].reimb_id_pk);
-		var text2 = document.createTextNode(username[i].dates);
-		var text3 = document.createTextNode(username[i].reimb_type);
-		var text4 = document.createTextNode(username[i].amount);
-		var text5 = document.createTextNode(username[i].reimb_status);
-		var text6 = document.createTextNode(username[i].reimb_description);
+		var text1 = document.createTextNode(users[i].reimb_id_pk);
+		var text2 = document.createTextNode(users[i].dates);
+		var text3 = document.createTextNode(users[i].reimb_type);
+		var text4 = document.createTextNode(users[i].amount);
+		var text5 = document.createTextNode(users[i].reimb_status);
+		var text6 = document.createTextNode(users[i].reimb_description);
 		
 		td1.appendChild(text1);
 		td2.appendChild(text2);

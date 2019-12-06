@@ -78,7 +78,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 			List<Reimbursement> array = new ArrayList<Reimbursement>();
 			System.out.println(array);
 			try (Connection conn = DriverManager.getConnection(urL, username, password)) {
-				PreparedStatement ps = conn.prepareStatement("SELECT * FROM Reimbursement WHERE reimb_status=1");
+				PreparedStatement ps = conn.prepareStatement("SELECT * FROM Reimbursement WHERE reimb_status_fk=1");
 				ResultSet rs = ps.executeQuery();
 				while (rs.next()) {
 					array.add(new Reimbursement(rs.getInt("reimb_id_pk"), rs.getDouble("amount"), rs.getString("dates"),
@@ -112,6 +112,8 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 			}
 			return array;
 		}
+
+	
 		
 //		public int updateReimbursement(Reimbursement r) {
 //			try (Connection conn = DriverManager.getConnection(urL, username, password)) {

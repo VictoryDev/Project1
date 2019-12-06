@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>The Company Employee Dashboard</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">    
 </head>
+
 <body id="employee">
     <div class="container_emp">
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
@@ -39,70 +40,14 @@
         
         <!-- View Past Reimbursement -->
         <section id="emp_view_past">
-                <div id="past_table"></div>
-              <button class="btn btn-dark" id="btn">Get</button>
-                
-            </section>
+          <div id="past_table"></div>
+          <button class="btn btn-dark" id="past_btn">Get</button>
+        </section>
 
         <!-- Pending Request -->
         <section id="emp_view_pending">
-            <table class="table table-hover table-dark">
-                <thead>
-                    <tr>
-                        <h1>Pending Reimbursement Tickets</h1>
-                        <th scope="col">Reimbursement ID#</th>
-                        <th scope="col">Employee ID#</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Type</th>
-                        <th scope="col">Total Reimbursement</th>
-                        <th scope="col">Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>#1818</td>
-                        <th scope="row">1</th>
-                        <td>10-1-2019</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>Food</td>
-                        <td>$123456789</td>
-                        <td>Pending</td>
-                    </tr>
-                    <tr>
-                        <td>#2323</td>
-                        <th scope="row">2</th>
-                        <td>10-2-2019</td>
-                        <td>Spark</td>
-                        <td>Lotto</td>
-                        <td>Lodging</td>
-                        <td>$1234</td>
-                        <td>Approved</td>
-                    </tr>
-                    <tr>
-                        <td>#21212</td>
-                        <th scope="row">3</th>
-                        <td>10-3-2019</td>
-                        <td>Red</td>
-                        <td>Whoopy</td>
-                        <td>Travel</td>
-                        <td>$9876</td>
-                        <td>Pending</td>
-                    </tr>
-                    <tr>
-                        <td>#9898</td>
-                        <th scope="row">4</th>
-                        <td>10-4-2019</td>
-                        <td>iPhone</td>
-                        <td>Apple</td>
-                        <td>Other</td>
-                        <td>$5675</td>
-                        <td>Pending</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div id="pending_table"></div>
+          <button class="btn btn-dark" id="pending_btn">Get Pending</button>
         </section>
 
         <!-- Submit New Reimbursement Ticket -->
@@ -155,8 +100,9 @@
             </form>
         </section>
     </div> 
-    <script type="text/javascript" src="../js/Home.js"></script>
-    <script type="text/javascript" src="../js/getReimbursement.js"></script>
+    <script type="text/javascript" src="../js/getPast.js"></script>
+    <script type="text/javascript" src="../js/getPending.js"></script> 
+    
     
     
 
@@ -164,5 +110,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/Home.js"></script>
 </body>
 </html>

@@ -3,15 +3,15 @@
  */
 window.onload = function(){
 	let xhttp = new XMLHttpRequest();
-	xhttp.open("GET" , 'http://localhost:8080/Project1Reimbursement/html/pastReimbursement.do',true);
+	xhttp.open("GET" , 'http://localhost:8080/Project1Reimbursement/html/pendingReimbursement.do',true);
 	xhttp.send();
-	console.log("inside get Reimbursement JS")
+	console.log("inside Pending Reimbursement JS")
 }
 
-let buttonOne = document.getElementById("btn");
-buttonOne.addEventListener('click', getReimbursementInfo);
+let buttonTwo = document.getElementById("pending_btn");
+buttonTwo.addEventListener('click', getPendingReimbursementInfo);
 
-function getReimbursementInfo(){
+function getPendingReimbursementInfo(){
 	let xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function(){
 		if(xhttp.readyState == 4 && xhttp.status == 200){
@@ -22,7 +22,7 @@ function getReimbursementInfo(){
 		}
 	}
 	
-	xhttp.open("GET" , 'http://localhost:8080/Project1Reimbursement/html/getPastReimbursement.do',true);
+	xhttp.open("GET" , 'http://localhost:8080/Project1Reimbursement/html/getPendingReimbursement.do',true);
 	xhttp.send();
 }
 
@@ -95,6 +95,6 @@ function setValues(username){
 		
 	}
 	
-	document.getElementById("past_table").append(table);
+	document.getElementById("pending_table").append(table);
 	
 }

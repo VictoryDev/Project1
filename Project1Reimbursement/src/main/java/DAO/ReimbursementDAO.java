@@ -8,7 +8,7 @@ public interface ReimbursementDAO {
 		// CREATE
 				public int insertReimbursement(Reimbursement r);
 				// READ
-				public Reimbursement selectReimbursementByStatus(int status);
+//				public Reimbursement selectReimbursementByStatus(int status);
 				public List<Reimbursement> selectAllReimbursement();
 				public List<Reimbursement> selectAllReimbursementByStatus();
 				// UPDATE

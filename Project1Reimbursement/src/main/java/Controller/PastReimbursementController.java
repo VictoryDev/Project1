@@ -14,12 +14,16 @@ import DAOIMPL.ReimbursementDAOImpl;
 import expense.Reimbursement;
 
 public class PastReimbursementController {
+	
+	static ReimbursementDAOImpl rdi = new ReimbursementDAOImpl();
+	static List<Reimbursement> reimb = new ArrayList<Reimbursement>();
+	
 	public static String selectAllReimbursement(HttpServletRequest request ) {
 		
-		ReimbursementDAOImpl rdi = new ReimbursementDAOImpl();
-		List<Reimbursement> reimb = new ArrayList<Reimbursement>();
 		reimb= rdi.selectAllReimbursement();
 		request.getSession().setAttribute("reimb_array", reimb);
+		System.out.println("SelectAllReimbursement ArrayList " + reimb);
+
 		
 		return "/html/empDashboard.html";
 	}
@@ -27,7 +31,7 @@ public class PastReimbursementController {
 	public static String getSelectAllReimbursement(HttpServletRequest request, HttpServletResponse response) {
 		
 		//retrieving the pet object from our session
-				ArrayList<Reimbursement> reimb = (ArrayList<Reimbursement>)request.getSession().getAttribute("reimb_array");
+				reimb = (ArrayList<Reimbursement>)request.getSession().getAttribute("reimb_array");
 				
 				//Marshalling Tool
 				//converting an object into a data format
@@ -39,7 +43,7 @@ public class PastReimbursementController {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-				
+				System.out.println("aksdjbf getSelectAllReimbursement ArrayList " + reimb);
 				return reimb.toString();
 	}
 

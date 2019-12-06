@@ -37,11 +37,11 @@ public class RequestHelper {
 		case "/Project1Reimbursement/html/getPastReimbursement.do":
 			return PastReimbursementController.getSelectAllReimbursement(request,response);
 
-//		case "/Project1Reimbursement/html/pendingReimbursement.do":
-//			return PendingReimbursementController(request);
-//			
-//		case "/Project1Reimbursement/html/getPendingReimbursement.do":
-//			return PendingReimbursementController.getSelectAllReimbursement(request,response);
+		case "/Project1Reimbursement/html/pendingReimbursement.do":
+			return PendingReimbursementController.selectAllReimbursementByStatus(request);
+			
+		case "/Project1Reimbursement/html/getPendingReimbursement.do":
+			return PendingReimbursementController.getSelectAllReimbursementByStatus(request,response);
 			
 		default:
 			return "/html/index.html";

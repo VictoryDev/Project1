@@ -15,17 +15,18 @@ import expense.Reimbursement;
 
 public class PendingReimbursementController {
 
-		public static String selectAllReimbursement(HttpServletRequest request ) {
+		public static String selectAllReimbursementByStatus(HttpServletRequest request ) {
 			
 			ReimbursementDAOImpl rdi = new ReimbursementDAOImpl();
 			List<Reimbursement> reimb = new ArrayList<Reimbursement>();
-			reimb= rdi.selectReimbursementByStatus(rdi.);
-			request.getSession().setAttribute("reimb_array", reimb);
-			
+			reimb= rdi.selectAllReimbursementByStatus();
+			request.getSession().setAttribute("reimb_pending_array", reimb);
+			System.out.println("getSelectAllReimbursementByStatus ArrayList " + reimb);
+
 			return "/html/empDashboard.html";
 		}
 		
-		public static String getSelectAllReimbursement(HttpServletRequest request, HttpServletResponse response) {
+		public static String getSelectAllReimbursementByStatus(HttpServletRequest request, HttpServletResponse response) {
 			
 			//retrieving the pet object from our session
 					ArrayList<Reimbursement> reimb = (ArrayList<Reimbursement>)request.getSession().getAttribute("reimb_array");
@@ -41,6 +42,8 @@ public class PendingReimbursementController {
 						e.printStackTrace();
 					}
 					
+					System.out.println("getSelectAllReimbursementByStatus ArrayList " + reimb);
+
 					return reimb.toString();
 		}
 

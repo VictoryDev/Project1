@@ -17,6 +17,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 		private static String urL = "jdbc:oracle:thin:@sqlassignment.czmpw5zhoaqq.us-east-1.rds.amazonaws.com:1521:orcl";
 		private static String username = "Victory";
 		private static String password = "p4ssw0rd";
+		static Reimbursement r = new Reimbursement();
 		
 		@Override
 		public int insertReimbursement(Reimbursement r) {
@@ -115,17 +116,20 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 
 	
 		
-//		public int updateReimbursement(Reimbursement r) {
-//			try (Connection conn = DriverManager.getConnection(urL, username, password)) {
-//				PreparedStatement ps = conn.prepareStatement("UPDATE Reimbursement SET reimb_status= (?) WHERE reimb_id=?");
-//				ps.setInt(1, r.getReimb_status());
-//				ps.setInt(4, r.getReimb_id());
-//				ps.executeUpdate();
-//			} catch (SQLException e) {
-//				e.printStackTrace();
-//			}
-//			return 0;
-//		}
+		public int updateReimbursement(Reimbursement r) {
+			try (Connection conn = DriverManager.getConnection(urL, username, password)) {
+				PreparedStatement ps = conn.prepareStatement("UPDATE Reimbursement SET reimb_status= (?) WHERE reimb_id=?");
+				if(r.) {
+					
+				}
+				ps.setInt(1, r.getReimb_status());
+				ps.setInt(2, r.getReimb_id_pk());
+				ps.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return 0;
+		}
 
 	
 	}

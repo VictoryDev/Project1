@@ -12,7 +12,7 @@ public interface ReimbursementDAO {
 				public List<Reimbursement> selectAllReimbursement();
 				public List<Reimbursement> selectAllReimbursementByStatus();
 				// UPDATE
-//				public int updateReimbursement(Reimbursement r);
+				public int updateReimbursement(Reimbursement r);
 	}
 	
 

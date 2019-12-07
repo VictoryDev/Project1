@@ -42,7 +42,12 @@ public class RequestHelper {
 			
 		case "/Project1Reimbursement/html/getPendingReimbursement.do":
 			return PendingReimbursementController.getSelectAllReimbursementByStatus(request,response);
-			
+		
+		case "/Project1Reimbursement/html/allReimbursement.do":	
+			return fManViewAll.selectAllReimbursementByStatus(request);
+		
+		case "/Project1Reimbursement/html/getAllReimbursement.do":
+			return fManViewAll.getSelectAllReimbursementByStatus(request, response);
 		default:
 			return "/html/index.html";
 		}

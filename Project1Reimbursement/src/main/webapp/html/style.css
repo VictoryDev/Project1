@@ -1,0 +1,139 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css?family=Nanum+Myeongjo&display=swap');
+/* @import url('https://fonts.googleapis.com/css?family=Playfair+Display+SC&display=swap'); */
+*{
+    margin:0;
+    padding:0;
+    font-family: 'Nanum Myeongjo', serif;
+    font-weight:bolder;
+    /* font-family: 'Playfair Display SC', serif; */
+
+}
+
+h1{
+color:black;
+}
+a{
+	text-decoration:none;
+	color:black;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+.btn{
+    box-shadow: 2px 2px 5px rgb(51, 51, 51);
+}
+/* INDEX HTML */
+.container-registration{
+    background: url("001.jpg");
+    opacity: .9;
+    background-size: fit;
+    width:100%;
+    height:100vh;
+}
+
+.hero{
+    width:100%;
+    height:100vh;
+}
+
+.logo{
+    margin-left:50vh;
+    padding-top:20vh;
+}
+
+#registration{
+    padding:10px;
+    display:inline-block;
+    border: 4px solid rgb(46, 46, 51);
+    box-shadow: 5px 3px 5px black;
+}
+
+#login{
+    margin:10vh;
+    margin-left:15vw;
+    display:inline-block;
+    border: 4px solid rgb(46, 46, 51);
+    box-shadow:5px 3px 5px black;
+}
+
+
+
+/* EMPLOYEE DASHBOARD */
+
+.container_emp{
+    position:relative;
+}
+
+.emp_hero{
+    height:100vh;
+    width:100%;
+    background-image:url("002.jpg");
+    background-position: 60% 60%;
+}
+
+#hello{
+    width:30%;
+    height:5%;
+    padding:30px;
+    position:absolute;
+    color:white;
+    font-weight:bolder;
+    top:10%;
+    left:2.5%;
+    border: 4px solid rgb(80, 80, 88);
+    box-shadow:5px 3px 5px black;
+    border-radius: 3px;
+}
+
+#emp_view_past{
+    height:100vh;
+    width:100%;
+    background:#a7a7a7;
+}
+
+section h1{
+    font-size:75px;
+}
+
+#emp_view_pending{
+    height:93vh;
+    width:100%;
+    background:#c7c7c7;
+}
+#emp_new_reim{
+    height:93vh;
+    width:100%;
+    background:#e8e8e8;
+}
+
+/* FINANCIAL MANAGER DASHBOARD */
+.fMan_hero{
+    height:100vh;
+    width:100%;
+    background-image: url("004.jpg");
+    background-position: 50% 60%;
+}
+
+.fMan_hero #hello{
+    padding:10vw;
+}
+
+#fMan_view_all{
+    height:90vh;
+    width:100%;
+    background:#a7a7a7;
+}
+#fMan_view_past{
+    height:93vh;
+    width:100%;
+    background:#c7c7c7;
+}
+#fMan_approve_deny{
+    height:93vh;
+    width:100%;
+    background:#e8e8e8;
+}
+

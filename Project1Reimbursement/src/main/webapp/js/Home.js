@@ -24,10 +24,12 @@ function getEmployeeInfo(){
 
 function setValues(session){
 	document.getElementById("hello").innerHTML = "Welcome " + session.firstname + " "+ session.lastname;
-	document.getElementById("emp_id").innerHTML = "Employee ID..." + session.employee_id_pk;
-	document.getElementById("firstName").innerHTML = "Employee First name..." + session.firstname;
-	document.getElementById("lastName").innerHTML = "Employee Last name..." + session.lastname;
-	document.getElementById("email").innerHTML = "Employee Email..." + session.email;
+	document.getElementById("emp_id").innerHTML = "Employee ID=     " + session.employee_id_pk;
+	document.getElementById("firstName").innerHTML = "Employee First name=  " + session.firstname;
+	document.getElementById("lastName").innerHTML = "Employee Last name=  " + session.lastname;
+	document.getElementById("email").innerHTML = "Employee Email=  " + session.email;
+	document.getElementById("emp_past_table_h1").innerHTML = session.firstname + " " + session.lastname + "'s Past Reimbursement Tickets";
+	document.getElementById("emp_pending_table_h1").innerHTML = session.firstname + " " + session.lastname + "'s Pending Reimbursement Tickets";
 }
 
 //Get PAST JavaScript

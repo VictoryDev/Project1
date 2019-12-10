@@ -25,122 +25,125 @@ function getEmployeeInfo(){
 
 function setValues(session){
 	document.getElementById("hello").innerHTML = "Welcome " + session.firstname + " "+ session.lastname;
+//	document.getElementById("fMan_viewAll_h1").innerHTML = "View All Reimbursement Request";
+	document.getElementById("fMan_viewPast_h1").innerHTML = "View Past Reimbursement Request";
+	document.getElementById("fMan_approveDeny_h1").innerHTML = "Approve and Deny Reimbursement Request";
 
 }
 
 //************************************************************************************************************************************************************
 //Financial manager view all 
-let buttonThree = document.getElementById("fMan_viewAll_btn");
-buttonThree.addEventListener('click', getReimbursementInfo);
-function getReimbursementInfo() {
-	var xhttpStart = new XMLHttpRequest();
-	xhttpStart.open("GET",'http://localhost:8080/Project1Reimbursement/html/pastEmployeeReimbursement.do', true);
-	xhttpStart.send();
-	
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function() {
-		if (xhttp.readyState == 4 && xhttp.status == 200) {
-			console.log(xhttp.responseText);
-			let users = JSON.parse(xhttp.responseText);
-			setVal(users);
-			console.log(users);
-			console.log("inside fMan View All ");
-		}
-	}
-	xhttp.open("GET", 'http://localhost:8080/Project1Reimbursement/html/getPastEmployeeReimbursement.do', true);
-	xhttp.send();
-}
-function setVal(users) {
-	var table = document.createElement('table');
-	table.setAttribute("class", "table table-hover table-dark");
-	var tr = document.createElement('tr');
-	var td1 = document.createElement('td');
-	var td2 = document.createElement('td');
-	var td3 = document.createElement('td');
-	var td4 = document.createElement('td');
-	var td5 = document.createElement('td');
-	var td6 = document.createElement('td');
-	var td7 = document.createElement('td');
-	var td8 = document.createElement('td');
-	var td9 = document.createElement('td');
-	var td10 = document.createElement('td');
-	var text1 = document.createTextNode('Reimbursement ID');
-	var text2 = document.createTextNode('Dates');
-	var text3 = document.createTextNode("Reimbursement Types");
-	var text4 = document.createTextNode("Amount");
-	var text5 = document.createTextNode("Reimbursement Status");
-	var text6 = document.createTextNode('Submission Date');
-	var text7 = document.createTextNode('Author');
-	var text8 = document.createTextNode('Resolver');
-	var text9 = document.createTextNode('Reimbursement Status');
-	var text10 = document.createTextNode('Reimbursement Type');
-	td1.appendChild(text1);
-	td2.appendChild(text2);
-	td3.appendChild(text3);
-	td4.appendChild(text4);
-	td5.appendChild(text5);
-	td6.appendChild(text6);
-	td7.appendChild(text7);
-	td8.appendChild(text8);
-	td9.appendChild(text9);
-	td10.appendChild(text10);
-	tr.appendChild(td1);
-	tr.appendChild(td2);
-	tr.appendChild(td3);
-	tr.appendChild(td4);
-	tr.appendChild(td5);
-	tr.appendChild(td6);
-	tr.appendChild(td7);
-	tr.appendChild(td8);
-	tr.appendChild(td9);
-	tr.appendChild(td10);
-	table.appendChild(tr);
-	for (var i = 0; i < users.length; i++) {
-		var tr = document.createElement('tr');
-		var td1 = document.createElement('td');
-		var td2 = document.createElement('td');
-		var td3 = document.createElement('td');
-		var td4 = document.createElement('td');
-		var td5 = document.createElement('td');
-		var td6 = document.createElement('td');
-		var td7 = document.createElement('td');
-		var td8 = document.createElement('td');
-		var td9 = document.createElement('td');
-		var td10 = document.createElement('td');
-		var text1 = document.createTextNode(users[i].reimb_id_pk);
-		var text2 = document.createTextNode(users[i].dates);
-		var text3 = document.createTextNode(users[i].reimb_type);
-		var text4 = document.createTextNode(users[i].amount);
-		var text5 = document.createTextNode(users[i].reimb_status);
-		var text6 = document.createTextNode(users[i].reimb_description);
-		var text7 = document.createTextNode(users[i].author_id);
-		var text8 = document.createTextNode(users[i].resolver_id);
-		var text9 = document.createTextNode(users[i].reimb_status);
-		var text10 = document.createTextNode(users[i].reimb_type);
-		td1.appendChild(text1);
-		td2.appendChild(text2);
-		td3.appendChild(text3);
-		td4.appendChild(text4);
-		td5.appendChild(text5);
-		td6.appendChild(text6);
-		td7.appendChild(text7);
-		td8.appendChild(text8);
-		td9.appendChild(text9);
-		td10.appendChild(text10);
-		tr.appendChild(td1);
-		tr.appendChild(td2);
-		tr.appendChild(td3);
-		tr.appendChild(td4);
-		tr.appendChild(td5);
-		tr.appendChild(td6);
-		tr.appendChild(td7);
-		tr.appendChild(td8);
-		tr.appendChild(td9);
-		tr.appendChild(td10);
-		table.appendChild(tr);
-	}
-	document.getElementById("view_all_table").append(table);
-}
+//let buttonThree = document.getElementById("fMan_viewAll_btn");
+//buttonThree.addEventListener('click', getReimbursementInfo);
+//function getReimbursementInfo() {
+//	var xhttpStart = new XMLHttpRequest();
+//	xhttpStart.open("GET",'http://localhost:8080/Project1Reimbursement/html/pastEmployeeReimbursement.do', true);
+//	xhttpStart.send();
+//	
+//	var xhttp = new XMLHttpRequest();
+//	xhttp.onreadystatechange = function() {
+//		if (xhttp.readyState == 4 && xhttp.status == 200) {
+//			console.log(xhttp.responseText);
+//			let users = JSON.parse(xhttp.responseText);
+//			setVal(users);
+//			console.log(users);
+//			console.log("inside fMan View All ");
+//		}
+//	}
+//	xhttp.open("GET", 'http://localhost:8080/Project1Reimbursement/html/getPastEmployeeReimbursement.do', true);
+//	xhttp.send();
+//}
+//function setVal(users) {
+//	var table = document.createElement('table');
+//	table.setAttribute("class", "table table-hover table-dark");
+//	var tr = document.createElement('tr');
+//	var td1 = document.createElement('td');
+//	var td2 = document.createElement('td');
+//	var td3 = document.createElement('td');
+//	var td4 = document.createElement('td');
+//	var td5 = document.createElement('td');
+//	var td6 = document.createElement('td');
+//	var td7 = document.createElement('td');
+//	var td8 = document.createElement('td');
+//	var td9 = document.createElement('td');
+//	var td10 = document.createElement('td');
+//	var text1 = document.createTextNode('Reimbursement ID');
+//	var text2 = document.createTextNode('Dates');
+//	var text3 = document.createTextNode("Reimbursement Types");
+//	var text4 = document.createTextNode("Amount");
+//	var text5 = document.createTextNode("Reimbursement Status");
+//	var text6 = document.createTextNode('Submission Date');
+//	var text7 = document.createTextNode('Author');
+//	var text8 = document.createTextNode('Resolver');
+//	var text9 = document.createTextNode('Reimbursement Status');
+//	var text10 = document.createTextNode('Reimbursement Type');
+//	td1.appendChild(text1);
+//	td2.appendChild(text2);
+//	td3.appendChild(text3);
+//	td4.appendChild(text4);
+//	td5.appendChild(text5);
+//	td6.appendChild(text6);
+//	td7.appendChild(text7);
+//	td8.appendChild(text8);
+//	td9.appendChild(text9);
+//	td10.appendChild(text10);
+//	tr.appendChild(td1);
+//	tr.appendChild(td2);
+//	tr.appendChild(td3);
+//	tr.appendChild(td4);
+//	tr.appendChild(td5);
+//	tr.appendChild(td6);
+//	tr.appendChild(td7);
+//	tr.appendChild(td8);
+//	tr.appendChild(td9);
+//	tr.appendChild(td10);
+//	table.appendChild(tr);
+//	for (var i = 0; i < users.length; i++) {
+//		var tr = document.createElement('tr');
+//		var td1 = document.createElement('td');
+//		var td2 = document.createElement('td');
+//		var td3 = document.createElement('td');
+//		var td4 = document.createElement('td');
+//		var td5 = document.createElement('td');
+//		var td6 = document.createElement('td');
+//		var td7 = document.createElement('td');
+//		var td8 = document.createElement('td');
+//		var td9 = document.createElement('td');
+//		var td10 = document.createElement('td');
+//		var text1 = document.createTextNode(users[i].reimb_id_pk);
+//		var text2 = document.createTextNode(users[i].dates);
+//		var text3 = document.createTextNode(users[i].reimb_type);
+//		var text4 = document.createTextNode(users[i].amount);
+//		var text5 = document.createTextNode(users[i].reimb_status);
+//		var text6 = document.createTextNode(users[i].reimb_description);
+//		var text7 = document.createTextNode(users[i].author_id);
+//		var text8 = document.createTextNode(users[i].resolver_id);
+//		var text9 = document.createTextNode(users[i].reimb_status);
+//		var text10 = document.createTextNode(users[i].reimb_type);
+//		td1.appendChild(text1);
+//		td2.appendChild(text2);
+//		td3.appendChild(text3);
+//		td4.appendChild(text4);
+//		td5.appendChild(text5);
+//		td6.appendChild(text6);
+//		td7.appendChild(text7);
+//		td8.appendChild(text8);
+//		td9.appendChild(text9);
+//		td10.appendChild(text10);
+//		tr.appendChild(td1);
+//		tr.appendChild(td2);
+//		tr.appendChild(td3);
+//		tr.appendChild(td4);
+//		tr.appendChild(td5);
+//		tr.appendChild(td6);
+//		tr.appendChild(td7);
+//		tr.appendChild(td8);
+//		tr.appendChild(td9);
+//		tr.appendChild(td10);
+//		table.appendChild(tr);
+//	}
+//	document.getElementById("view_all_table").append(table);
+//}
 
 //************************************************************************************************************************************************************
 //View Past History
@@ -175,24 +178,37 @@ function setV(users){
 	var td4 = document.createElement('td');
 	var td5 = document.createElement('td');
 	var td6 = document.createElement('td');
+//	var td7 = document.createElement('td');
+//	var td8 = document.createElement('td');
+//	var td9 = document.createElement('td');
 	var text1 = document.createTextNode('Reimbursement ID');
 	var text2 = document.createTextNode('Dates');
 	var text3 = document.createTextNode("Reimbursement Types");
 	var text4 = document.createTextNode("Amount");
 	var text5 = document.createTextNode("Reimbursement Status");
 	var text6 = document.createTextNode('Submission Date');
+//	var text7 = document.createTextNode('Description');
+//	var text8 = document.createTextNode('Author ID');
+//	var text9 = document.createTextNode('Resolver ID');
+	
 	td1.appendChild(text1);
 	td2.appendChild(text2);
 	td3.appendChild(text3);
 	td4.appendChild(text4);
 	td5.appendChild(text5);
 	td6.appendChild(text6);
+//	td7.appendChild(text7);
+//	td8.appendChild(text8);
+//	td9.appendChild(text9);
 	tr.appendChild(td1);
 	tr.appendChild(td2);
 	tr.appendChild(td3);
 	tr.appendChild(td4);
 	tr.appendChild(td5);
 	tr.appendChild(td6);
+//	tr.appendChild(td7);
+//	tr.appendChild(td8);
+//	tr.appendChild(td9);
 	table.appendChild(tr);
 	for (var i = 0; i < users.length; i++){
 		var tr = document.createElement('tr');
@@ -202,24 +218,36 @@ function setV(users){
 		var td4 = document.createElement('td');
 		var td5 = document.createElement('td');
 		var td6 = document.createElement('td');
+//		var td7 = document.createElement('td');
+//		var td8 = document.createElement('td');
+//		var td9 = document.createElement('td');
 		var text1 = document.createTextNode(users[i].reimb_id_pk);
 		var text2 = document.createTextNode(users[i].dates);
 		var text3 = document.createTextNode(users[i].reimb_type);
 		var text4 = document.createTextNode(users[i].amount);
 		var text5 = document.createTextNode(users[i].reimb_status);
 		var text6 = document.createTextNode(users[i].reimb_description);
+//		var text7 = document.createTextNode(users[i].reimb_submit);
+//		var text8 = document.createTextNode(users[i].author_id);
+//		var text9 = document.createTextNode(users[i].resolver_id);
 		td1.appendChild(text1);
 		td2.appendChild(text2);
 		td3.appendChild(text3);
 		td4.appendChild(text4);
 		td5.appendChild(text5);
 		td6.appendChild(text6);
+//		td7.appendChild(text7);
+//		td8.appendChild(text8);
+//		td9.appendChild(text9);
 		tr.appendChild(td1);
 		tr.appendChild(td2);
 		tr.appendChild(td3);
 		tr.appendChild(td4);
 		tr.appendChild(td5);
 		tr.appendChild(td6);
+//		tr.appendChild(td7);
+//		tr.appendChild(td8);
+//		tr.appendChild(td9);
 		table.appendChild(tr);
 	}
 	document.getElementById("view_past_table").append(table);

@@ -13,7 +13,7 @@ import Controller.SessionController;
 
 public class Reimbursement extends SessionController {
 	
-	String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date(0));
+	String timeStamp = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z").format(1);
 
 	private int reimb_id_pk;
 	private double amount;

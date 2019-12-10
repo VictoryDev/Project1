@@ -40,10 +40,10 @@ public class RequestHelper {
 			return PastReimbursementController.getSelectAllReimbursement(request,response);
 
 		case "/Project1Reimbursement/html/pendingReimbursement.do":
-			return PendingReimbursementController.selectAllReimbursementByStatus(request);
+			return fManPendingController.selectAllReimbursementByStatus(request);
 			
 		case "/Project1Reimbursement/html/getPendingReimbursement.do":
-			return PendingReimbursementController.getSelectAllReimbursementByStatus(request,response);
+			return fManPendingController.getSelectAllReimbursementByStatus(request, response);
 			
 		case "/Project1Reimbursement/html/allReimbursement.do":	
 			return fManViewAll.selectAllReimbursementByStatus(request);

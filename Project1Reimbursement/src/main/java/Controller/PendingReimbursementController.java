@@ -21,7 +21,7 @@ public class PendingReimbursementController {
 
 		public static String selectAllReimbursementByStatus(HttpServletRequest request ) {
 			Employee emp = (Employee)request.getSession().getAttribute("username");
-			reimb= rdi.selectAllReimbursement();
+			reimb= rdi.selectAllReimbursementByStatus();
 			Iterator it = reimb.listIterator(); 
 			System.out.println("This is the emp "+emp);
 			if(emp.getEmployee_role().equals("1")) {

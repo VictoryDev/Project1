@@ -31,6 +31,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 				ps.setString(5, r.getReimb_resolve());
 				ps.setInt(6, r.getAuthor_id());
 				ps.setInt(7, r.getResolver_id());
+				System.out.println("Reimbursement insert thing "+r);
 				ps.setInt(8, r.getReimb_status());	
 				System.out.println(r.getReimb_type());
 				if (r.getReimb_type() == 1) {
@@ -58,7 +59,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 			List<Reimbursement> array = new ArrayList<Reimbursement>();
 			System.out.println("Select all Reimbursement by Status array: "+array);
 			try (Connection conn = DriverManager.getConnection(urL, username, password)) {
-				PreparedStatement ps = conn.prepareStatement("SELECT * FROM Reimbursement WHERE reimb_status_fk=1");
+				PreparedStatement ps = conn.prepareStatement("SELECT * FROM Reimbursement WHERE reimb_status_fk=0");
 				ResultSet rs = ps.executeQuery();
 				while (rs.next()) {
 					System.out.println("inside the selectpending");

@@ -13,9 +13,7 @@ import com.folder.bank.Customers;
 
 public class ReimbursementDAOImpl {
 	private static String urL
-	= "jdbc:oracle:thin:@bankapp.c8fjsw7dnsyi.us-west-1.rds.amazonaws.com:1521:orcl";
-	private static String username = "Victoryy";
-	private static String password = "p4ssw0rd";
+	
 	public int insertCustomer(Customers c) {
 		try (Connection conn = DriverManager.getConnection(urL,username,password)){
 			PreparedStatement ps = conn.prepareStatement("INSERT INTO Customers(customerID, accountType, username, passwords, totalBalance, pendingApproved) VALUES(?,?,?,?,?,?)");
